@@ -1,4 +1,4 @@
-# CertUnpinning
+# CertUnpinning [![Build Status](https://travis-ci.com/LieJiang/CertUnpinning.svg?branch=master)](https://travis-ci.com/LieJiang/CertUnpinning)
 This is a hook plugin used by [VirtualHook](https://github.com/rk700/VirtualHook). It removes HTTPS certificate pinning so that the traffic can be intercepted by burp.
 
 # Usage
