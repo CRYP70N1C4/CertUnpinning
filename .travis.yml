@@ -1,0 +1,36 @@
+language: android
+
+jdk:
+  - oraclejdk8
+
+notifications:
+  email: false
+
+sudo: false
+
+android:
+  components:
+    - tools
+    - build-tools-25.0.2
+    - android-25
+    - extra-android-m2repository
+    - extra-android-support
+
+before_install:
+ - chmod +x gradlew
+
+script:
+  - ./gradlew assembleRelease
+
+before_deploy:
+  - mv app/build/outputs/apk/app-release-unsigned.apk app/build/outputs/apk/certunpinning.apk
+
+deploy:
+  provider: releases
+  api_key:
+    secure: ${GH_TOKEN}
+  file: app/build/outputs/apk/certunpinning.apk
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
